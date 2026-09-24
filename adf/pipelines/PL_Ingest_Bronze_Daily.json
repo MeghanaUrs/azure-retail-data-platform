@@ -1,0 +1,57 @@
+{
+  "name": "PL_Ingest_Bronze_Daily",
+  "properties": {
+    "description": "Daily scheduled pipeline that copies source extracts (orders, customers, products) from the landing container into the Bronze zone, then triggers the Databricks Bronze->Silver notebook.",
+    "activities": [
+      {
+        "name": "Copy_Orders_To_Bronze",
+        "type": "Copy",
+        "inputs": [{ "referenceName": "DS_Landing_Orders_CSV", "type": "DatasetReference" }],
+        "outputs": [{ "referenceName": "DS_Bronze_Orders", "type": "DatasetReference" }],
+        "typeProperties": {
+          "source": { "type": "DelimitedTextSource", "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": false } },
+          "sink": { "type": "DeltaSink", "preCopyScript": null }
+        }
+      },
+      {
+        "name": "Copy_Customers_To_Bronze",
+        "type": "Copy",
+        "inputs": [{ "referenceName": "DS_Landing_Customers_CSV", "type": "DatasetReference" }],
+        "outputs": [{ "referenceName": "DS_Bronze_Customers", "type": "DatasetReference" }],
+        "typeProperties": {
+          "source": { "type": "DelimitedTextSource", "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": false } },
+          "sink": { "type": "DeltaSink" }
+        }
+      },
+      {
+        "name": "Copy_Products_To_Bronze",
+        "type": "Copy",
+        "inputs": [{ "referenceName": "DS_Landing_Products_CSV", "type": "DatasetReference" }],
+        "outputs": [{ "referenceName": "DS_Bronze_Products", "type": "DatasetReference" }],
+        "typeProperties": {
+          "source": { "type": "DelimitedTextSource", "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": false } },
+          "sink": { "type": "DeltaSink" }
+        }
+      },
+      {
+        "name": "Run_Silver_Transformation",
+        "type": "DatabricksNotebook",
+        "dependsOn": [
+          { "activity": "Copy_Orders_To_Bronze", "dependencyConditions": ["Succeeded"] },
+          { "activity": "Copy_Customers_To_Bronze", "dependencyConditions": ["Succeeded"] },
+          { "activity": "Copy_Products_To_Bronze", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": { "notebookPath": "/Repos/data-platform/databricks/02_silver_transformation" },
+        "linkedServiceName": { "referenceName": "LS_AzureDatabricks", "type": "LinkedServiceReference" }
+      },
+      {
+        "name": "Run_Gold_Aggregation",
+        "type": "DatabricksNotebook",
+        "dependsOn": [{ "activity": "Run_Silver_Transformation", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": { "notebookPath": "/Repos/data-platform/databricks/03_gold_aggregation" },
+        "linkedServiceName": { "referenceName": "LS_AzureDatabricks", "type": "LinkedServiceReference" }
+      }
+    ],
+    "annotations": ["batch", "daily", "retail-data-platform"]
+  }
+}

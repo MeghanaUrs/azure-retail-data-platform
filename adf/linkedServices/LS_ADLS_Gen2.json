@@ -1,0 +1,11 @@
+{
+  "name": "LS_ADLS_Gen2",
+  "properties": {
+    "type": "AzureBlobFS",
+    "typeProperties": {
+      "url": "https://retaildataplatformadls.dfs.core.windows.net"
+    },
+    "connectVia": null,
+    "description": "Primary Data Lake Storage Gen2 account hosting Bronze/Silver/Gold zones. Authenticated via managed identity in deployment."
+  }
+}

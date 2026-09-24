@@ -1,0 +1,14 @@
+{
+  "name": "LS_AzureDatabricks",
+  "properties": {
+    "type": "AzureDatabricks",
+    "typeProperties": {
+      "domain": "https://adb-retail-platform.azuredatabricks.net",
+      "newClusterNodeType": "Standard_DS3_v2",
+      "newClusterNumOfWorker": "2:4",
+      "newClusterVersion": "13.3.x-scala2.12",
+      "authentication": "MSI"
+    },
+    "description": "Job-cluster linked service used by ADF to trigger Silver and Gold Databricks notebooks. Auto-scaling 2-4 workers, job cluster (not interactive) to control cost."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "DS_Bronze_Orders",
+  "properties": {
+    "type": "DeltaTable",
+    "linkedServiceName": { "referenceName": "LS_ADLS_Gen2", "type": "LinkedServiceReference" },
+    "typeProperties": {
+      "folderPath": "bronze/orders"
+    },
+    "description": "Raw, as-landed orders. No transformation applied. Append-only, partitioned by ingestion date."
+  }
+}

@@ -1,0 +1,8 @@
+customer_id,customer_name,segment,province,signup_date,email_domain
+CUST501,Alice Ferreira,Retail,ON,2023-02-14,gmail.com
+CUST502,Ben Okafor,Retail,ON,2022-11-03,outlook.com
+CUST503,Chen Wei,Wholesale,AB,2021-07-22,yahoo.com
+CUST504,Divya Rao,Retail,BC,2024-01-09,gmail.com
+CUST505,Ethan Smith,Retail,ON,2023-09-30,hotmail.com
+CUST506,Fatima Khan,Wholesale,AB,2020-05-17,gmail.com
+CUST507,George Nolan,Retail,MB,2024-03-11,outlook.com

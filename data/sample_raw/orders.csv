@@ -1,0 +1,11 @@
+order_id,customer_id,product_id,order_date,quantity,unit_price,ship_city,ship_province,order_status
+ORD1001,CUST501,PRD01,2026-08-01,2,49.99,Toronto,ON,Delivered
+ORD1002,CUST502,PRD03,2026-08-01,1,129.50,Mississauga,ON,Delivered
+ORD1003,CUST503,PRD02,2026-08-02,5,19.99,Calgary,AB,Delivered
+ORD1004,CUST501,PRD04,2026-08-02,1,349.00,Toronto,ON,Cancelled
+ORD1005,CUST504,PRD01,2026-08-03,3,49.99,Vancouver,BC,Delivered
+ORD1006,CUST505,PRD05,2026-08-03,1,15.00,Ottawa,ON,Returned
+ORD1007,CUST502,PRD02,2026-08-04,2,19.99,Mississauga,ON,Delivered
+ORD1008,CUST506,PRD03,2026-08-04,1,129.50,Edmonton,AB,Delivered
+ORD1009,CUST503,PRD04,2026-08-05,1,349.00,Calgary,AB,Delivered
+ORD1010,CUST507,PRD01,2026-08-05,4,49.99,Winnipeg,MB,Delivered

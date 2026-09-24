@@ -1,0 +1,6 @@
+product_id,product_name,category,cost,list_price,supplier
+PRD01,Wireless Mouse,Electronics,22.00,49.99,SupplierA
+PRD02,USB-C Cable,Electronics,6.50,19.99,SupplierA
+PRD03,Desk Lamp,Home,58.00,129.50,SupplierB
+PRD04,Office Chair,Home,180.00,349.00,SupplierB
+PRD05,Notebook Set,Stationery,5.00,15.00,SupplierC
